@@ -1,0 +1,24 @@
+[2026-11-19 20:33:51] [INFO] [Clientes] Cliente creado: Cliente [CLI-001]: Laura Gómez | Correo: laura.gomez@empresa.com | Tel: 3104567890
+[2026-11-19 20:33:51] [INFO] [Clientes] Cliente creado: Cliente [CLI-002]: Carlos Mendoza | Correo: cmendoza@tech.co | Tel: 3209876543
+[2026-11-19 20:33:51] [ERROR] [Clientes] [ERR-101] El correo 'andres_sin_arroba.com' no tiene un formato válido.
+[2026-11-19 20:33:51] [ERROR] [Clientes] [ERR-101] Ya existe un cliente registrado con ID 'CLI-001'.
+[2026-11-19 20:33:51] [INFO] [Servicios] Servicio registrado: Sala 'Sala Innovación A' (Capacidad: 10 pers., con proyector) - Tarifa: $80000.0/h
+[2026-11-19 20:33:51] [INFO] [Servicios] Servicio registrado: Alquiler Equipo 'Workstations RTX' (Portátil Desarrollo x3) - Tarifa: $35000.0/h
+[2026-11-19 20:33:51] [INFO] [Servicios] Servicio registrado: Asesoría 'Auditoría Arquitectura Cloud' [Área: Cloud & DevOps | Presencial] - Tarifa: $120000.0/h
+[2026-11-19 20:33:51] [ERROR] [Servicios] Error al instanciar servicio: [ERR-101] La tarifa base del servicio debe ser mayor a 0.
+[2026-11-19 20:33:51] [INFO] [Reservas] Reserva confirmada: Reserva [RES-101] | Estado: CONFIRMADA | Cliente: Laura Gómez | Servicio: Sala Innovación A | Duración: 4h | Total: $358,785.00
+[2026-11-19 20:33:51] [AUDIT] [Reservas] Finalizado intento de operación para reserva 'RES-101'.
+[2026-11-19 20:33:51] [ERROR] [Reservas] [ERR-201] La sala 'Sala Innovación A' no está disponible.
+[2026-11-19 20:33:51] [AUDIT] [Reservas] Finalizado intento de operación para reserva 'RES-102'.
+[2026-11-19 20:34:11] [INFO] [Clientes] Cliente creado: Cliente [CLI-001]: Laura Gómez | Correo: laura.gomez@empresa.com | Tel: 3104567890
+[2026-11-19 20:34:11] [INFO] [Clientes] Cliente creado: Cliente [CLI-002]: Carlos Mendoza | Correo: cmendoza@tech.co | Tel: 3209876543
+[2026-11-19 20:34:11] [ERROR] [Clientes] [ERR-101] El correo 'andres_sin_arroba.com' no tiene un formato válido.
+[2026-11-19 20:34:11] [ERROR] [Clientes] [ERR-101] Ya existe un cliente registrado con ID 'CLI-001'.
+[2026-11-19 20:34:11] [INFO] [Servicios] Servicio registrado: Sala 'Sala Innovación A' (Capacidad: 10 pers., con proyector) - Tarifa: $80000.0/h
+[2026-11-19 20:34:11] [INFO] [Servicios] Servicio registrado: Alquiler Equipo 'Workstations RTX' (Portátil Desarrollo x3) - Tarifa: $35000.0/h
+[2026-11-19 20:34:11] [INFO] [Servicios] Servicio registrado: Asesoría 'Auditoría Arquitectura Cloud' [Área: Cloud & DevOps | Presencial] - Tarifa: $120000.0/h
+[2026-11-19 20:34:11] [ERROR] [Servicios] Error al instanciar servicio: [ERR-101] La tarifa base del servicio debe ser mayor a 0.
+[2026-11-19 20:34:11] [INFO] [Reservas] Reserva confirmada: Reserva [RES-101] | Estado: CONFIRMADA | Cliente: Laura Gómez | Servicio: Sala Innovación A | Duración: 4h | Total: $358,785.00
+[2026-11-19 20:34:11] [AUDIT] [Reservas] Finalizado intento de operación para reserva 'RES-101'.
+[2026-11-19 20:34:11] [ERROR] [Reservas] [ERR-201] La sala 'Sala Innovación A' no está disponible.
+[2026-11-19 20:34:11] [AUDIT] [Reservas] Finalizado intento de operación para reserva 'RES-102'.
