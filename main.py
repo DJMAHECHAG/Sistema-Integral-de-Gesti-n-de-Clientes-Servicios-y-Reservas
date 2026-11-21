@@ -75,13 +75,59 @@ def ejecutar_simulacion() -> None:
     # Operación 10 (Fallida - Servicio no disponible): Intento reservar la misma sala ya ocupada
     sistema.crear_y_confirmar_reserva("RES-102", cliente_2, sala_juntas, duracion_horas=2)
 
-    # =========================================================================
-    # TODO (PARA OTRO INTEGRANTE): Completar las operaciones 11 y 12 de simulación
-    # =========================================================================
-    # TODO Operación 11 (Fallida): Intentar reservar 'equipos_dev' por 1 hora (debe fallar porque el mínimo son 2 horas).
-    # TODO Operación 12 (Exitosa y Cancelación): Reservar 'asesoria_arq' por 3 horas con 5% de descuento,
-    # cancelar 'reserva_1' usando sistema.cancelar_reserva(reserva_1) e intentar cancelarla una segunda vez
-    # para comprobar que la excepción ReservaInconsistenteError sea controlada sin detener el programa.
+  
+    # --- BLOQUE 4: PRUEBAS ADICIONALES DE RESERVAS ---
+    print("\n--- FASE 4: VALIDACIONES Y CANCELACIONES ---")
+
+    # Operación 11 (Fallida): Intento reservar equipos por 1 hora.
+    # El servicio exige una duración mínima de 2 horas.
+    reserva_11 = sistema.crear_y_confirmar_reserva(
+        "RES-103",
+        cliente_1,
+        equipos_dev,
+        duracion_horas=1
+    )
+
+    # Compruebo que el sistema rechazó la duración inválida.
+    if reserva_11 is None:
+        print("[PRUEBA 11 OK] Se rechazó la duración inválida.")
+    else:
+        print("[PRUEBA 11 FALLIDA] Se aceptó una duración inválida.")
+
+    # Operación 12: Creo una asesoría de 3 horas con 5 % de descuento.
+    reserva_12 = sistema.crear_y_confirmar_reserva(
+        "RES-104",
+        cliente_2,
+        asesoria_arq,
+        duracion_horas=3,
+        descuento=0.05
+    )
+
+    # Compruebo que se creó y confirmó la reserva.
+    if reserva_12 is not None and reserva_12.estado == "CONFIRMADA":
+        print("[PRUEBA 12 OK] Asesoría confirmada correctamente.")
+    else:
+        print("[PRUEBA 12 FALLIDA] No se confirmó la asesoría.")
+
+    # Cancelo la reserva de sala creada en la operación 9.
+    if reserva_1 is not None:
+        sistema.cancelar_reserva(reserva_1)
+
+        # Compruebo que la cancelación fue correcta.
+        if reserva_1.estado == "CANCELADA":
+            print("[OK] Primera cancelación realizada.")
+        else:
+            print("[ERROR] No se canceló correctamente.")
+
+        # Intento cancelarla nuevamente.
+        # El sistema debe controlar ReservaInconsistenteError.
+        sistema.cancelar_reserva(reserva_1)
+
+        # Compruebo que el programa continúa funcionando.
+        print("[PRUEBA FINAL] El programa sigue funcionando.")
+    else:
+        print("[ERROR] La reserva inicial no está disponible.")
+
 
     # Imprimo el mensaje final confirmando que completé todas las pruebas sin interrupciones
     print("\n" + "=" * 75)

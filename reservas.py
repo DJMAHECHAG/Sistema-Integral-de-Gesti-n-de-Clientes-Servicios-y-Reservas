@@ -233,7 +233,38 @@ class SistemaGestionFJ:
     # TODO (PARA OTRO INTEGRANTE): Completar el método cancelar_reserva
     # =========================================================================
     def cancelar_reserva(self, reserva: Reserva) -> None:
-        # TODO: Implementar un bloque try/except que valide si 'reserva' es una instancia de Reserva,
-        # llame a reserva.cancelar_reserva(), registre el éxito o el error (ErrorSistemaFJ) en self.__logger
-        # e imprima el mensaje correspondiente en consola sin detener el programa.
-        pass
+        
+        # Intento cancelar la reserva y controlar posibles errores.
+        try:
+            # Verifico que el dato recibido sea una reserva válida.
+            if not isinstance(reserva, Reserva):
+                raise DatoInvalidoError(
+                    "El objeto recibido no es una reserva válida."
+                )
+
+            # Ejecuto la cancelación de la reserva.
+            reserva.cancelar_reserva()
+
+        # Capturo las excepciones personalizadas del sistema.
+        except ErrorSistemaFJ as error:
+            # Registro el error sin detener la aplicación.
+            self.__logger.registrar_evento(
+                "ERROR", "Reservas",
+                f"Error al cancelar reserva: {error}"
+            )
+            print(f"[ERROR CONTROLADO] {error}")
+
+        # Si la cancelación fue correcta, registro el éxito.
+        else:
+            self.__logger.registrar_evento(
+                "INFO", "Reservas",
+                "Reserva cancelada correctamente."
+            )
+            print("[OK] Reserva cancelada correctamente.")
+
+        # Registro el final del intento de cancelación.
+        finally:
+            self.__logger.registrar_evento(
+                "AUDIT", "Reservas",
+                "Finalizado intento de cancelación."
+            )
